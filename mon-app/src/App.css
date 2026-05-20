@@ -1,0 +1,48 @@
+html, body, #root {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 486px;
+  height: 485px;
+  padding: 12px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  height: 231px;
+  margin: 0;
+  font-family: Poppins;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 64px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #25282B;
+}
+
+h2 {
+  height: 108px;
+  margin: 0;
+  font-family: Nunito;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  color: #828282;
+}
+
+.portrait {
+  width: 777px;
+  height: 877px;
+  position: absolute;
+  top: -248px;
+  opacity: 1;
+}
