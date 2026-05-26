@@ -1,0 +1,19 @@
+.btn {
+  width: 720px;
+  height: 629px;
+  border: 2px solid #25282B;
+  opacity: 1;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: rgba(37, 40, 43, 0.05);
+}
+
+.btn:active {
+  background-color: rgba(37, 40, 43, 0.1);
+}

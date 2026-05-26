@@ -12,8 +12,6 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  position: relative;
-  overflow: hidden;
 }
 
 h1 {
@@ -39,10 +37,9 @@ h2 {
   color: #828282;
 }
 
-.portrait {
-  width: 777px;
-  height: 877px;
-  position: absolute;
-  top: -248px;
+.pexels-image {
+  width: 720px;
+  height: 629px;
+  transform: rotate(0deg);
   opacity: 1;
 }
