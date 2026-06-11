@@ -1,10 +1,17 @@
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import './App.css';
 import heroImage from './assets/hero.png';
 import instagramIcon from './assets/instagram.png';
 import linkedinIcon from './assets/LinkedIn.png';
 import mailIcon from './assets/mail.png';
+import { useAuth } from './context/AuthContext';
 
-// Données des projets
+const Login = lazy(() => import('./pages/Login'));
+const AdminProjects = lazy(() => import('./pages/AdminProjects'));
+const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
 const projects = [
   {
     id: 1,
@@ -29,7 +36,6 @@ const projects = [
   },
 ];
 
-// Composant carte projet — réutilisé 3 fois
 function ProjectCard({ title, description, image, link }) {
   return (
     <div className="project-card">
@@ -37,17 +43,15 @@ function ProjectCard({ title, description, image, link }) {
       <div className="project-card__body">
         <h3 className="project-card__title">{title}</h3>
         <p className="project-card__description">{description}</p>
-        <a href={link} className="project-card__link">View Project</a>
+        <a href={link} className="project-card__link">Voir le projet</a>
       </div>
     </div>
   );
 }
 
-export default function App() {
+function Home() {
   return (
-    <div>
-
-      {/* SECTION HERO */}
+    <main>
       <section className="hero">
         <div className="hero__content">
           <h1 className="hero__title">
@@ -57,8 +61,12 @@ export default function App() {
             Short text with details about you, what you do or your professional career. You can add more information on the about page.
           </p>
           <div className="hero__buttons">
-            <a href="#" className="btn btn--primary">Projects</a>
-            <a href="#" className="btn btn--secondary">LinkedIn</a>
+            <Link to="/contact" className="btn btn--primary">
+              Contact
+            </Link>
+            <Link to="/admin/projects" className="btn btn--secondary">
+              Admin
+            </Link>
           </div>
         </div>
         <div className="hero__image-wrapper">
@@ -66,7 +74,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECTION PROJETS */}
       <section className="projects">
         <h2 className="projects__title">Projects</h2>
         <div className="projects__grid">
@@ -82,24 +89,74 @@ export default function App() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <div className="footer__icons">
-          {/* Instagram */}
           <a href="#" className="footer__icon" aria-label="Instagram">
             <img src={instagramIcon} alt="Instagram" />
           </a>
-          {/* LinkedIn */}
           <a href="#" className="footer__icon" aria-label="LinkedIn">
             <img src={linkedinIcon} alt="LinkedIn" />
           </a>
-          {/* Mail */}
           <a href="#" className="footer__icon" aria-label="Mail">
             <img src={mailIcon} alt="Mail" />
           </a>
         </div>
       </footer>
+    </main>
+  );
+}
 
-    </div>
+function ProtectedRoute({ children }) {
+  const { user } = useAuth();
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
+export default function App() {
+  const { user, logout } = useAuth();
+
+  return (
+    <BrowserRouter>
+      <div className="app-shell">
+        <header className="app-header">
+          <div className="app-title">Portfolio</div>
+          <nav className="app-nav">
+            <Link to="/">Accueil</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/admin/projects">Admin</Link>
+          </nav>
+          <div className="app-actions">
+            {user ? (
+              <button type="button" className="btn btn--secondary" onClick={logout}>
+                Déconnexion
+              </button>
+            ) : (
+              <Link to="/login" className="btn btn--primary">
+                Connexion
+              </Link>
+            )}
+          </div>
+        </header>
+
+        <Suspense fallback={<div className="page page--center"><p>Chargement...</p></div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/admin/projects"
+              element={
+                <ProtectedRoute>
+                  <AdminProjects />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </BrowserRouter>
   );
 }

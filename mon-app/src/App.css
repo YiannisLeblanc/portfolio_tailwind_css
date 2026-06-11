@@ -230,3 +230,161 @@ body {
 .footer__icon:hover {
   opacity: 0.6;
 }
+
+.app-shell {
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 40px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+.app-title {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.app-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.app-nav a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.app-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.page {
+  padding: 40px 40px 80px;
+}
+
+.page--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  background: #f6f6f6;
+}
+
+.auth-card,
+.contact-card,
+.card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.05);
+  max-width: 520px;
+  width: 100%;
+}
+
+.admin-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.admin-card {
+  padding: 28px;
+}
+
+.form-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.form-stack label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: #222;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-error {
+  color: #c32c2c;
+  font-size: 13px;
+}
+
+.form-success,
+.form-message {
+  color: #1f7a1f;
+  font-size: 14px;
+}
+
+.project-list,
+.message-list {
+  display: grid;
+  gap: 16px;
+}
+
+.project-item,
+.message-item {
+  border: 1px solid #e5e5e5;
+  padding: 18px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.small-text {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #555;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding: 60px 100px;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
