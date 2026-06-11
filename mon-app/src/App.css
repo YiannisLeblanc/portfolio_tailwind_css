@@ -1,45 +1,232 @@
-html, body, #root {
-  background-color: white;
+/* ===== RESET & BASE ===== */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  width: 486px;
-  height: 485px;
-  padding: 12px;
-  background-color: white;
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  min-height: 480px;
+  overflow: hidden;
+  position: relative;
+  gap: 60px;
+}
+
+.hero__content {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__title {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.hero__subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 32px;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Boutons */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.btn--primary {
+  background-color: #fdc435ff;
+  color: #111;
+}
+
+.btn--primary:hover {
+  background-color: #111;
+  color: #fdc435ff;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: #111;
+  border: 2px solid #111;
+}
+
+.btn--secondary:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* Image héro */
+.hero__image-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero__image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== PROJECTS ===== */
+.projects {
+  padding: 80px 80px;
+  background: #fff;
+}
+
+.projects__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 48px;
+  color: #111;
+}
+
+.projects__grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-h1 {
-  height: 231px;
-  margin: 0;
-  font-family: Poppins;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 64px;
-  line-height: 120%;
-  letter-spacing: 0%;
-  color: #25282B;
+/* Carte projet */
+.project-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-h2 {
-  height: 108px;
-  margin: 0;
-  font-family: Nunito;
-  font-weight: 400;
+.project-card__image {
+  width: 50%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  order: 2;
+}
+
+.project-card__body {
+  padding: 24px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  order: 1;
+}
+
+/* Alternance pour le 2ème bloc */
+.project-card:nth-child(2) .project-card__image {
+  order: 1;
+}
+
+.project-card:nth-child(2) .project-card__body {
+  order: 2;
+}
+
+.project-card__title {
   font-size: 24px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  color: #828282;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111;
 }
 
-.pexels-image {
-  width: 720px;
-  height: 629px;
-  transform: rotate(0deg);
-  opacity: 1;
+.project-card__description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.project-card__link {
+  display: inline-block;
+  width: fit-content;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  border-radius: 24px;
+  cursor: pointer;
+  border: 2px solid #111;
+  background-color: transparent;
+  letter-spacing: 0.5px;
+}
+
+.project-card__link:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #fff;
+  padding: 32px 0 48px 0;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer__icons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer__icon {
+  color: #111;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer__icon:hover {
+  opacity: 0.6;
 }
